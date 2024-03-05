@@ -3,10 +3,10 @@ import { Apple } from "./Apple.js";
 
 export class Platform {
   constructor() {
-    this.blockSize = 20;
+    this.blockSize = 30;
     this.widthBlocks = 25;
     this.heightBlocks = 25;
-    this.backgroundColour = 'lightgray';
+    this.backgroundColour = 'lightgreen';
     this.snake = new Snake(this);
     this.apple = new Apple(this);
   }

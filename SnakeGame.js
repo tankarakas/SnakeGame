@@ -9,10 +9,14 @@ import { Snake } from './Snake.js';
 class SnakeGame {
   /**
    * Constructs the game
-   * @param {string} gameCanvasID canvas ID in the HTML
    */
   constructor(gameCanvasID) {
     this.platform = new Platform();
+    /**
+     * someProperty is an example property that is set to `true`
+     * @type {HTMLCanvasElement}
+     * @public
+     */
     this.gameCanvas = document.getElementById(gameCanvasID);
     this.gameCanvas.setAttribute('width', this.platform.getWidthInPx());
     this.gameCanvas.setAttribute('height', this.platform.getHeightInPx());
@@ -62,17 +66,22 @@ class SnakeGame {
 
   drawSnake(delta) {
     this.platform.snake.segments.forEach((segment, index) => {
-      if (index === 0) {
-        this.context.fillStyle = "darkgreen";
-      } else {
-        this.context.fillStyle = this.platform.snake.colour;
-      }
+      this.context.fillStyle = this.platform.snake.colour;
+      // if (index === 0) {
+      //   this.context.arc(segment.x, segment.y, 70, 0, Math.PI, false);
+      //   context.closePath();
+      //   context.lineWidth = 0;
+      //   context.fillStyle = 'red';
+      //   context.fill();
+      //   context.stroke();  
+      // } else {
       this.context.fillRect(
         segment.x * this.platform.blockSize,
         segment.y * this.platform.blockSize,
-        this.platform.blockSize,
-        this.platform.blockSize
-      );
+          this.platform.blockSize,
+          this.platform.blockSize
+        );
+      // }
     });
   }
 
@@ -124,11 +133,11 @@ class SnakeGame {
   }
 
   drawScore() {
-    this.context.font = "30px VT323";
+    this.context.font = "30px Arial";
     this.context.fillStyle = "black";
-    this.context.fillText("Score: " + this.platform.snake.score, 30, 30);
+    this.context.fillText("Score: " + this.platform.snake.score, 30, 50);
     this.context.fillStyle = "black";
-    this.context.fillText("Best Score: " + this.platform.snake.bestScore, 30, 30 * 2);
+    this.context.fillText("Best Score: " + this.platform.snake.bestScore, 30, 50 * 2);
   }
 
   drawCanvas(delta) {
