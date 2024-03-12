@@ -11,7 +11,7 @@ export class Platform {
     this.apple = new Apple(this);
   }
 
-  stepGame () {
+  stepGame() {
     if (!this.snake.crashed()) {
       this.snake.move();
     } else {
